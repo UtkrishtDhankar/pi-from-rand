@@ -4,4 +4,4 @@
 
 Usage:
 
-`python pi.py n`, where `n` is the number of pairs to generate.
+`python pi.py --pairs PAIRS --max MAX`, where `PAIRS` are the number of times to roll a pair of numbers, and `MAX` is the maximum number it is possible to roll.
