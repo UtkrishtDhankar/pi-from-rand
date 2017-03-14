@@ -1,8 +1,8 @@
 import math
 import random
 import sys
+import argparse
 
-usage_str = "Usage: python pi.py [number of pairs]"
 
 def generate_pair(low = 1, high = 120):
     """
@@ -16,15 +16,21 @@ def generate_pair(low = 1, high = 120):
 
 
 def main():
-    if len(sys.argv) != 2:
-        print(usage_str)
-        return
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--pairs",
+                        help="the number of pairs generated",
+                        type=int, default=1000)
+    parser.add_argument("-m", "--max",
+                        help="the max random number possible",
+                        type=int,
+                        default=120)
+    args = parser.parse_args()
 
-    num_pairs = int(sys.argv[1])
+    num_pairs = args.pairs
 
     coprimes = 0
     for i in range(num_pairs):
-        (a, b) = generate_pair()
+        (a, b) = generate_pair(1, args.max)
         if math.gcd(a, b) == 1:
             coprimes += 1
 
